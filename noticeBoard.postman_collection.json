@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "aa41d6b2-0a56-41ef-b72b-d5d1f88087ae",
+		"name": "noticeBoard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all ads",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/ads/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"ads",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ad base on ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/ads/62b220114b2326ce507c3618",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"ads",
+						"62b220114b2326ce507c3618"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get 404 image error",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/adssd",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"adssd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get time by heartbeat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/heartbeat",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"heartbeat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post correct ad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Sprzedam krzeszlo\",\n    \"description\": \"Sprzedam krzeszlo marki ikea rocznik 2020\",\n    \"author\": \"Janusz\",\n    \"category\": \"Meble uzywaane\",\n    \"tags\": [\"Drewniane\", \"białe\", \"nowy\", \"tanio\"],\n    \"price\": \"300\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/ads",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"ads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post incorrect data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Sprzedam krzeszlo\",\n    \"description\": \"Sprzedam krzeszlo marki ikea rocznik 2020\",\n    \"category\": \"Meble uzywaane\",\n    \"tags\": [\"Drewniane\", \"białe\", \"nowy\", \"tanio\"],\n    \"price\": \"300\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/ads/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"ads",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete all ads",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/delete",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete one ad by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/ads/62b220114b2326ce507c3618",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"ads",
+						"62b220114b2326ce507c3618"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update correct ad",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Sprzedam rower\",\n    \"description\": \"Sprzedam rower marki romet rocznik 2000\",\n    \"author\": \"Maciej\",\n    \"category\": \"Rowery uzywaane\",\n    \"tags\": [\"Cross\", \"kolor biały\", \"w super stanie\", \"niska cena\"],\n    \"price\": \"3200\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/ads/62b220114b2326ce507c3618",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"ads",
+						"62b220114b2326ce507c3618"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update with the same data as previous",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Sprzedam rower\",\n    \"description\": \"Sprzedam rower marki romet rocznik 2000\",\n    \"author\": \"Maciej\",\n    \"category\": \"Rowery uzywaane\",\n    \"tags\": [\"Cross\", \"kolor biały\", \"w super stanie\", \"niska cena\"],\n    \"price\": \"3200\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/ads/62b220114b2326ce507c3618",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"ads",
+						"62b220114b2326ce507c3618"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update with incorrect ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Sprzedam rower\",\n    \"description\": \"Sprzedam rower marki romet rocznik 2000\",\n    \"author\": \"Maciej\",\n    \"category\": \"Rowery uzywaane\",\n    \"tags\": [\"Cross\", \"kolor biały\", \"w super stanie\", \"niska cena\"],\n    \"price\": \"3200\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}:{{port}}/ads/123456789012",
+					"host": [
+						"{{baseURL}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"ads",
+						"123456789012"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
