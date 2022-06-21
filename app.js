@@ -1,9 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const status = require('http-status');
+const { redirect } = require('statuses');
 const app = express();
 
-const { init, getAds, getAd, deleteAd, addAd, updateAd } = require('./db');
+const { init, getAds, getAd, deleteAd, addAd, updateAd, deleteMany } = require('./db');
 
 app.use(express.json());
 
@@ -53,6 +54,16 @@ init().then(() => {
             res.send("Error " + res.statusCode)
         }
     })
+    app.delete('/delete', async (req, res) => {
+        const result = await deleteMany();
+        if (result) {
+            res.statusCode = status.NO_CONTENT;
+            res.send(result);
+        } else {
+            res.statusCode = status.NOT_FOUND;
+            res.send("Error " + res.statusCode)
+        }
+    })
 
     app.patch('/ads/:id', async (req, res) => {
         const { id } = req.params;
@@ -74,12 +85,16 @@ init().then(() => {
             }
         }
     });
-})
 
-    .finally(() => {
-        app.get('/heartbeat', (req, res) => {
-            res.send(new Date());
-        })
-        app.listen(process.env.PORT, () => console.log('Server runnig'));
+    app.get('/heartbeat', (req, res) => {
+        res.send(new Date().toString());
     })
+})
+.finally(() => {
+    app.all('*', (req, res) => {
+        res.statusCode = status.NOT_FOUND;
+        res.sendFile(__dirname + '/404.png')
+    })
+    app.listen(process.env.PORT, () => console.log('Server runnig'));
+})
 

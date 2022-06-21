@@ -28,6 +28,10 @@ const init = () =>
         return adsCollection.deleteOne({ _id: new ObjectId(id) });
     }
 
+    const deleteMany = () => {
+        return adsCollection.deleteMany({})
+    }
+
     const addAd = (newAd) => {
         let adToAdd = {};
         adToAdd.title = newAd.title;
@@ -54,4 +58,4 @@ const init = () =>
     }
 
 
-module.exports = { init, getAds, getAd, deleteAd, addAd, updateAd }
+module.exports = { init, getAds, getAd, deleteAd, addAd, updateAd, deleteMany }
